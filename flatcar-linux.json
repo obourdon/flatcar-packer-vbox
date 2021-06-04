@@ -55,6 +55,11 @@
             "destination": "/tmp/cadvisor"
         },
         {
+            "type": "file",
+            "source": "cadvisor.service",
+            "destination": "/tmp/cadvisor.service"
+        },
+        {
             "type": "shell",
             "script": "./hashicorp_utils.sh"
         },

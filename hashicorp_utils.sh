@@ -81,4 +81,6 @@ echo Done
 
 echo -n "Installing cAdvisor ..."
 sudo mv /tmp/cadvisor /opt/bin
+sudo chown root:root /opt/bin/cadvisor
+sudo chmod 755 /opt/bin/cadvisor
 echo Done

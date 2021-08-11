@@ -1,6 +1,6 @@
 PACKER_CMD ?= packer
 RELEASE ?= stable
-VERSION ?= 2905.2.0
+VERSION ?= 2905.2.1
 DIGEST_URL ?= https://$(RELEASE).release.flatcar-linux.net/amd64-usr/$(VERSION)/flatcar_production_iso_image.iso.DIGESTS
 CONFIG ?= flatcar-linux-config.yml
 DISK_SIZE ?= 40000

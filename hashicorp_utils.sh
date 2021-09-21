@@ -26,7 +26,7 @@ rm -f /tmp/nomad.zip
 echo Done
 
 echo "Installing CNI plugins ..."
-CNI_VERSION=1.0.0
+CNI_VERSION=1.0.1
 curl -s -L -o /tmp/cni-plugins.tgz https://github.com/containernetworking/plugins/releases/download/v${CNI_VERSION}/cni-plugins-linux-amd64-v${CNI_VERSION}.tgz
 sudo mkdir -p /opt/cni/bin
 sudo tar -C /opt/cni/bin -xzf /tmp/cni-plugins.tgz

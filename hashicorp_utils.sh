@@ -5,7 +5,7 @@ set -ex
 # python3 -m http.server 8000
 # wget http://192.168.1.22:8000/script.sh && bash script.sh
 
-CONSUL_VERSION=${CONSUL_VERSION:-1.10.2}
+CONSUL_VERSION=${CONSUL_VERSION:-1.10.3}
 NOMAD_VERSION=${NOMAD_VERSION:-1.1.5}
 LOKI_VERSION=${LOKI_VERSION:-2.3.0}
 

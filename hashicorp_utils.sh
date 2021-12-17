@@ -6,7 +6,7 @@ set -ex
 # wget http://192.168.1.22:8000/script.sh && bash script.sh
 
 CONSUL_VERSION=${CONSUL_VERSION:-1.11.1}
-NOMAD_VERSION=${NOMAD_VERSION:-1.2.2}
+NOMAD_VERSION=${NOMAD_VERSION:-1.2.3}
 LOKI_VERSION=${LOKI_VERSION:-2.4.1}
 
 sudo mkdir -p /opt/bin

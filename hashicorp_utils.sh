@@ -8,6 +8,7 @@ set -ex
 CONSUL_VERSION=${CONSUL_VERSION:-1.11.1}
 NOMAD_VERSION=${NOMAD_VERSION:-1.2.3}
 LOKI_VERSION=${LOKI_VERSION:-2.4.1}
+VAULT_VERSION=${VAULT_VERSION:-1.9.1}
 
 sudo mkdir -p /opt/bin
 
@@ -23,6 +24,12 @@ echo -n "Installing Nomad ..."
 curl -s -L -o /tmp/nomad.zip https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_linux_amd64.zip
 sudo unzip -o -q -d /opt/bin /tmp/nomad.zip
 rm -f /tmp/nomad.zip
+echo Done
+
+echo -n "Installing Vault ..."
+curl -s -L -o /tmp/vault.zip https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip
+sudo unzip -o -q -d /opt/bin /tmp/vault.zip
+rm -f /tmp/vault.zip
 echo Done
 
 echo "Installing CNI plugins ..."

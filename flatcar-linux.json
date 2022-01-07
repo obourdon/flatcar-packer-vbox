@@ -82,6 +82,10 @@
         },
         {
             "type": "shell",
+            "script": "./install_system_utilities.sh"
+        },
+        {
+            "type": "shell",
             "inline": [
                 "sudo nohup shutdown now < /dev/null > /dev/null 2>&1 &",
                 "echo Power off...",

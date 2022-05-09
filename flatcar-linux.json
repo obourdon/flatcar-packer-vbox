@@ -1,7 +1,7 @@
 {
     "variables": {
         "flatcar_channel": "stable",
-        "flatcar_version": "3033.2.4",
+        "flatcar_version": "3139.2.0",
         "disk_size": "40000",
         "memory": "2048",
         "boot_wait": "25s",

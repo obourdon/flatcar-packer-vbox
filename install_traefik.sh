@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-VERSION=v2.6.6
+VERSION=v2.7.0
 TARGET=linux_amd64
 DEST="/opt/bin"
 

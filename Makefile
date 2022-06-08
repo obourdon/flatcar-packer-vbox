@@ -36,9 +36,9 @@ builds/flatcar-$(RELEASE)-$(VERSION)-virtualbox.box: cadvisor
 		-var 'core_user_password=$(PASSWORD)' \
 		flatcar-linux.json
 
-cadvisor:
+cadvisor: Dockerfile
 	docker build -t cadvisor:build .
-	docker run -it --name cadvisor-build cadvisor:build ls -lrtc /go/src/github.com/google/cadvisor
+	docker run -it --name cadvisor-build cadvisor:build ls -lrtc /go/src/github.com/google/cadvisor/cadvisor
 	docker cp cadvisor-build:/go/src/github.com/google/cadvisor/cadvisor .
 	docker rm cadvisor-build
 	

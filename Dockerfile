@@ -1,18 +1,12 @@
-FROM golang:1.16-alpine3.13
+FROM fedora:33
 
 WORKDIR /go
-RUN apk add --no-cache bash \
-        g++ \
-        git \
-        linux-headers \
-        musl-dev \
-        make \
-        yarn \
-        npm \
-        c-ares-dev
+RUN dnf update -y && dnf install -y wget git cmake gcc g++ flex bison file zlib-devel systemd-devel rsync && \
+	wget -q https://go.dev/dl/go1.16.15.linux-amd64.tar.gz -O - | tar zxf - && \
+	rsync -a /go/go/ /usr/local && rm -rf /go/go
 
 ARG CADVISOR_VERSION=0.44.1
 RUN mkdir -p src/github.com/google/cadvisor && \
-        cd src/github.com/google/cadvisor && \
-        git clone -b v${CADVISOR_VERSION} https://github.com/google/cadvisor.git . && \
-        make build
+	cd src/github.com/google/cadvisor && \
+	git clone -b v${CADVISOR_VERSION} https://github.com/google/cadvisor.git . && \
+	make build

@@ -6,3 +6,4 @@ ignition.json
 -v.pwd
 -v.pwi
 Vagrantfile
+cadvisor

@@ -14,7 +14,7 @@ PASSWORD ?= packer
 
 flatcar-linux: builds/flatcar-$(RELEASE)-$(VERSION)-virtualbox.box
 
-builds/flatcar-$(RELEASE)-$(VERSION)-virtualbox.box:
+builds/flatcar-$(RELEASE)-$(VERSION)-virtualbox.box: cadvisor
 	$(eval ISO_CHECKSUM := $(shell curl -s "$(DIGEST_URL)" | grep "flatcar_production_iso_image.iso" | awk '{ print length, $$1 | "sort -rg"}' | awk 'NR == 1 { print $$2 }'))
 
 	# Please note that other password hashing methods described at
@@ -36,6 +36,12 @@ builds/flatcar-$(RELEASE)-$(VERSION)-virtualbox.box:
 		-var 'core_user_password=$(PASSWORD)' \
 		flatcar-linux.json
 
+cadvisor:
+	docker build -t cadvisor:build .
+	docker run -it --name cadvisor-build cadvisor:build ls -lrtc /go/src/github.com/google/cadvisor
+	docker cp cadvisor-build:/go/src/github.com/google/cadvisor/cadvisor .
+	docker rm cadvisor-build
+	
 clean:
 	rm -rf builds
 

@@ -38,10 +38,10 @@ builds/flatcar-$(RELEASE)-$(VERSION)-virtualbox.box: cadvisor
 
 cadvisor: Dockerfile
 	docker build -t cadvisor:build .
-	docker run -it --name cadvisor-build cadvisor:build ls -lrtc /go/src/github.com/google/cadvisor/cadvisor
-	docker cp cadvisor-build:/go/src/github.com/google/cadvisor/cadvisor .
+	docker run -it --name cadvisor-build cadvisor:build ls -lrtc /go/src/github.com/google/cadvisor/_output/cadvisor
+	docker cp cadvisor-build:/go/src/github.com/google/cadvisor/_output/cadvisor .
 	docker rm cadvisor-build
-	
+
 clean:
 	rm -rf builds
 

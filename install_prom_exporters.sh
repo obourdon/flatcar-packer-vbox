@@ -9,7 +9,7 @@ install-exporter(){
   local version="$2"
   local exporter_service="$(echo $exporter | tr '_' '-').service"
   cd "$DEST"
-  /usr/bin/sudo /usr/bin/wget --no-verbose "https://github.com/prometheus/${exporter}/releases/download/v${version}/${exporter}-${version}.linux-amd64.tar.gz" -O "${DEST}/$exporter.tar.gz"
+  /usr/bin/sudo /usr/bin/curl -sL -o "${DEST}/$exporter.tar.gz" "https://github.com/prometheus/${exporter}/releases/download/v${version}/${exporter}-${version}.linux-amd64.tar.gz"
   /usr/bin/sudo /usr/bin/tar xf "${DEST}/$exporter.tar.gz" "$exporter-$version.linux-amd64/$exporter"
   /usr/bin/sudo /usr/bin/mv "${exporter}-${version}.linux-amd64/${exporter}" "${DEST}/${exporter}"
   /usr/bin/sudo /usr/bin/chmod +x "${DEST}/${exporter}"

@@ -10,42 +10,42 @@ NOMAD_VERSION=${NOMAD_VERSION:-1.4.3}
 LOKI_VERSION=${LOKI_VERSION:-2.7.1}
 VAULT_VERSION=${VAULT_VERSION:-1.12.2}
 
-sudo mkdir -p /opt/bin
+/usr/bin/sudo /usr/bin/mkdir -p /opt/bin
 
 # TODO: parametrize linux and amd64 according to uname (-m -s)
 # TODO: factorize Hashicorp product same download and extract function
 echo -n "Installing Consul ..."
-curl -s -L -o /tmp/consul.zip https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip
-sudo unzip -o -q -d /opt/bin /tmp/consul.zip
-rm -f /tmp/consul.zip
+/usr/bin/curl -sL -o /tmp/consul.zip https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip
+/usr/bin/sudo /usr/bin/unzip -o -q -d /opt/bin /tmp/consul.zip
+/usr/bin/rm -f /tmp/consul.zip
 echo Done
 
 echo -n "Installing Nomad ..."
-curl -s -L -o /tmp/nomad.zip https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_linux_amd64.zip
-sudo unzip -o -q -d /opt/bin /tmp/nomad.zip
-rm -f /tmp/nomad.zip
+/usr/bin/curl -sL -o /tmp/nomad.zip https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_linux_amd64.zip
+/usr/bin/sudo /usr/bin/unzip -o -q -d /opt/bin /tmp/nomad.zip
+/usr/bin/rm -f /tmp/nomad.zip
 echo Done
 
 echo -n "Installing Vault ..."
-curl -s -L -o /tmp/vault.zip https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip
-sudo unzip -o -q -d /opt/bin /tmp/vault.zip
-rm -f /tmp/vault.zip
+/usr/bin/curl -sL -o /tmp/vault.zip https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip
+/usr/bin/sudo /usr/bin/unzip -o -q -d /opt/bin /tmp/vault.zip
+/usr/bin/rm -f /tmp/vault.zip
 echo Done
 
 echo "Installing CNI plugins ..."
 CNI_VERSION=1.1.1
-curl -s -L -o /tmp/cni-plugins.tgz https://github.com/containernetworking/plugins/releases/download/v${CNI_VERSION}/cni-plugins-linux-amd64-v${CNI_VERSION}.tgz
-sudo mkdir -p /opt/cni/bin
-sudo tar -C /opt/cni/bin -xzf /tmp/cni-plugins.tgz
-rm -f /tmp/cni-plugins.tgz
+/usr/bin/curl -sL -o /tmp/cni-plugins.tgz https://github.com/containernetworking/plugins/releases/download/v${CNI_VERSION}/cni-plugins-linux-amd64-v${CNI_VERSION}.tgz
+/usr/bin/sudo /usr/bin/mkdir -p /opt/cni/bin
+/usr/bin/sudo tar -C /opt/cni/bin -xzf /tmp/cni-plugins.tgz
+/usr/bin/rm -f /tmp/cni-plugins.tgz
 echo Done
 
 echo -n "Installing Loki ..."
-curl -s -L -o /tmp/loki.zip https://github.com/grafana/loki/releases/download/v${LOKI_VERSION}/loki-linux-amd64.zip
-sudo unzip -o -q -d /opt/bin /tmp/loki.zip
-sudo mv /opt/bin/loki-linux-amd64 /opt/bin/loki
-rm -f /tmp/loki.zip
-sudo mkdir -p /etc/loki /var/lib/loki
+/usr/bin/curl -sL -o /tmp/loki.zip https://github.com/grafana/loki/releases/download/v${LOKI_VERSION}/loki-linux-amd64.zip
+/usr/bin/sudo /usr/bin/unzip -o -q -d /opt/bin /tmp/loki.zip
+/usr/bin/sudo /usr/bin/mv /opt/bin/loki-linux-amd64 /opt/bin/loki
+/usr/bin/rm -f /tmp/loki.zip
+/usr/bin/sudo /usr/bin/mkdir -p /etc/loki /var/lib/loki
 
 # https://grafana.com/docs/loki/latest/configuration/examples/
 # https://github.com/boltdb/bolt
@@ -53,21 +53,21 @@ sudo mkdir -p /etc/loki /var/lib/loki
 echo Done
 
 echo -n "Installing Promtail ..."
-curl -s -L -o /tmp/promtail.zip https://github.com/grafana/loki/releases/download/v${LOKI_VERSION}/promtail-linux-amd64.zip
-sudo unzip -o -q -d /opt/bin /tmp/promtail.zip
-sudo mv /opt/bin/promtail-linux-amd64 /opt/bin/promtail
-rm -f /tmp/promtail.zip
-sudo mkdir -p /etc/promtail
+/usr/bin/curl -sL -o /tmp/promtail.zip https://github.com/grafana/loki/releases/download/v${LOKI_VERSION}/promtail-linux-amd64.zip
+/usr/bin/sudo /usr/bin/unzip -o -q -d /opt/bin /tmp/promtail.zip
+/usr/bin/sudo /usr/bin/mv /opt/bin/promtail-linux-amd64 /opt/bin/promtail
+/usr/bin/rm -f /tmp/promtail.zip
+/usr/bin/sudo /usr/bin/mkdir -p /etc/promtail
 
 # From https://gitlab.com/xavki/presentations-loki-fr/-/blob/master/3-installation-promtail/slides.md
 # /etc/promtail/promtail.yml.sample
 echo Done
 
 echo -n "Installing Logcli ..."
-curl -s -L -o /tmp/logcli.zip https://github.com/grafana/loki/releases/download/v${LOKI_VERSION}/logcli-linux-amd64.zip
-sudo unzip -o -q -d /opt/bin /tmp/logcli.zip
-sudo mv /opt/bin/logcli-linux-amd64 /opt/bin/logcli
-rm -f /tmp/logcli.zip
+/usr/bin/curl -sL -o /tmp/logcli.zip https://github.com/grafana/loki/releases/download/v${LOKI_VERSION}/logcli-linux-amd64.zip
+/usr/bin/sudo /usr/bin/unzip -o -q -d /opt/bin /tmp/logcli.zip
+/usr/bin/sudo /usr/bin/mv /opt/bin/logcli-linux-amd64 /opt/bin/logcli
+/usr/bin/rm -f /tmp/logcli.zip
 echo Done
 
 # Configure of call logcli
@@ -82,12 +82,12 @@ echo Done
 # logcli query '{host="my-test-serv",job="nginx"}' --tail
 
 echo -n "Installing Docker ..."
-sudo systemctl enable docker
-sudo systemctl start docker
+/usr/bin/sudo /usr/bin/systemctl enable docker
+/usr/bin/sudo /usr/bin/systemctl start docker
 echo Done
 
 echo -n "Installing cAdvisor ..."
-sudo mv /tmp/cadvisor /opt/bin
-sudo chown root:root /opt/bin/cadvisor
-sudo chmod 755 /opt/bin/cadvisor
+/usr/bin/sudo /usr/bin/mv /tmp/cadvisor /opt/bin
+/usr/bin/sudo /usr/bin/chown root:root /opt/bin/cadvisor
+/usr/bin/sudo /usr/bin/chmod 755 /opt/bin/cadvisor
 echo Done

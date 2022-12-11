@@ -7,22 +7,22 @@ set -e
 DEST="/opt/bin"
 
 (
-cat <<EOF
+/usr/bin/cat <<EOF
 #!/usr/bin/env bash
 
-if echo \$* | grep 'c load'; then
+if echo \$* | /usr/bin/grep 'c load'; then
 	# File is last argument
-	eval \$(grep = \${@: -1} | sed -e 's/-/_/g')
+	eval \$(/usr/bin/grep = \${@: -1} | sed -e 's/-/_/g')
 	echo -e "[Match]\nName=\$id\n\n[Network]\nAddress=\$addresses\nGateway=\$gateway\n" >/etc/systemd/network/static.network
 	# Take new network info into account
 	sleep 3
-	sudo systemctl restart systemd-networkd
+	/usr/bin/sudo /usr/bin/systemctl restart systemd-networkd
 	# Cleanup
-	sudo rm -rf /etc/NetworkManager
+	/usr/bin/sudo /usr/bin/rm -rf /etc/NetworkManager
 fi
 EOF
-) | sudo tee ${DEST}/nmcli
+) | /usr/bin/sudo tee ${DEST}/nmcli
 
-sudo chown root:root ${DEST}/nmcli
-sudo chmod 755 ${DEST}/nmcli
-sudo mkdir -p /etc/NetworkManager/system-connections
+/usr/bin/sudo /usr/bin/chown root:root ${DEST}/nmcli
+/usr/bin/sudo /usr/bin/chmod 755 ${DEST}/nmcli
+/usr/bin/sudo /usr/bin/mkdir -p /etc/NetworkManager/system-connections

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-NODE_EXPORTER_VERSION=1.3.1
+NODE_EXPORTER_VERSION=1.5.0
 DEST="/opt/bin"
 
 install-exporter(){

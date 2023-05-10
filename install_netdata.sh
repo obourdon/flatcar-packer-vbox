@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-NETDATA_VERSION=1.37.1
+NETDATA_VERSION=1.39.0
 DEST="/opt/bin"
 
 /usr/bin/sudo /usr/bin/curl -sL -o ${DEST}/kickstart.sh https://raw.githubusercontent.com/netdata/netdata/v${NETDATA_VERSION}/packaging/installer/kickstart.sh

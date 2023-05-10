@@ -11,6 +11,7 @@ CT_VER ?= v0.9.4
 ARCH ?= $(shell uname -m)
 HEADLESS ?= false
 PASSWORD ?= packer
+PACKER_LOG ?= 0
 
 flatcar-linux: builds/flatcar-$(RELEASE)-$(VERSION)-virtualbox.box
 
@@ -24,7 +25,7 @@ builds/flatcar-$(RELEASE)-$(VERSION)-virtualbox.box: cadvisor
 
 	sed -e "s?PASSWORD_HASH?$(shell echo "$(PASSWORD)" | openssl passwd -1 -stdin -quiet | sed -e 's/\$$/\\$$/g')?" $(CONFIG) | ct -pretty -out-file ignition.json
 
-	$(PACKER_CMD) build -force \
+	PACKER_LOG=$(PACKER_LOG) $(PACKER_CMD) build -force \
 		-var 'flatcar_channel=$(RELEASE)' \
 		-var 'flatcar_version=$(VERSION)' \
 		-var 'iso_checksum=$(ISO_CHECKSUM)' \
